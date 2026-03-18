@@ -1,0 +1,73 @@
+---
+title: " Bucles y Declaraciones Condicionales"
+author: "Anamaria Rodríguez Ramirez"
+date: today
+execute:
+  encoding: UTF-8
+format:
+  html:
+    html-math-method: mathjax
+    charset: utf-8
+    toc: true
+    number-sections: true
+    theme: cosmo
+  pdf:
+    toc: true
+    toc-title: "Contenido"
+    number-sections: true
+    documentclass: scrreprt
+    geometry:
+      - top=25mm
+      - left=25mm
+      - right=25mm
+      - bottom=25mm
+lang: es
+bibliography: referencias.bib     # Archivo BibTeX con todas las referencias
+---
+
+# Bucles y Declaraciones Condicionales
+
+En el presente documento se desarrollan los ejercicios propuestos en el libro [@rodriguez2026sig], para comprender los conceptos de Bucles y Declaraciones Condicionales en los lenguajes de Python, R y Julia.
+
+## Ejercicios:
+
+### Sobre el Ejercicio 1
+- Si estuvieras desarrollando el código en Python, ¿cómo sabe el computador qué instrucciones pertenecen dentro del ciclo for, cuáles pertenecen al if, y cuáles deben ejecutarse solo al final del programa? ¿Qué diferencia estructural existe frente a cómo lo resolverías en R o Julia?
+
+El computador sabe que instrucciones pertenecen al ciclo `for` por la indexación, donde se cumple la regla de 4 espacios, luego de hacer menciones al bucle y a la variable. Lo mismo, se aplica para cuando se llama al condicional `if`. Se sabe además que las que deben ejecutarse unicamente al final del programa son aquellas que no tienen indexación. Es una estructura diferenciada con respecto a lenguajes como R, donde la apertura y cierre de ciclos además de las respectivas indexaciones es el uso de corchetes `{ }`. Para el caso de Julia, se utiliza la palabra `end` al finalizar cada ciclo o cada condicional, para indicar al programa que hasta ahí va el bucle.
+
+### Sobre el Ejercicio 2 (Ciclos Infinitos)
+- En el ciclo `while` de la simulación del río, ¿qué sucedería exactamente con la memoria y la ejecución del programa si olvidas incluir la instrucción que incrementa la variable lectura_actual en 1? ¿Por qué este riesgo no existe al usar un ciclo `for`?
+
+Si se olvidara incluir el incremento de la variable, la condición de `lectura_actual < max_lecturas`, no cambiaria porque no existe una delimitación para el ciclo `while` por lo que se volvería infinito. Esto genera que el programa no termina, consumiendo CPU y saturando la memoria si se generan datos. Esto no ocurre en el ciclo `for^ porque hay un número establecido de veces que debe correr el bucle, el cual depende del tamaño de la colección, por lo que ciclo siempre termina.
+
+### Pregunta General (Operadores Lógicos)
+
+-  Si estás programando en R o Julia, explica detalladamente por qué es peligroso usar el operador doble (&&) cuando intentas filtrar un vector completo de altitudes, y por qué en ese caso específico debes usar el operador sencillo `(& o .&)`.
+
+Mientras el doble `&&` esta diseñado para comparar un solo escalar, como es el caso del ejercicio cuando delimita los elementos en determinados rangos (escalares), emplearlo para la evaluación de vectores generaría que solo evaluara el primer elemento e ignorara el resto debido a su funcionalidad (evaluación corta). Para el caso de los operadores `& o .&` el primero usado en R y el segundo en Julia, son operadores vectorizados que permite la revisión elemento por elemento que se encuentran dentro un vector, lo que devuelve como resultado un nuevo vector de valores booleanos. 
+
+# Códigos de Python, R y Julia
+
+Para el desarrollo de los ejercicios propuestos para el capítulo, se puede acceder a los 'scripts' de cada lenguaje
+
+## Python
+
+El código puede ser consultado en el siguiente archivo:
+
+[Script de Python](bucles_declaracionescondicionales.py)
+
+## R
+
+El código puede ser consultado en el siguiente archivo:
+
+[Script de R](bucles_declaracionescondicionales.R)
+
+## Julia
+
+
+El código puede ser consultado en el siguiente archivo:
+
+[Script de Julia](bucles_declaracionescondicionales.jl)
+
+# Referencias
